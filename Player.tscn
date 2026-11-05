@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqg78sofaixu3"]
+[gd_scene load_steps=6 format=3 uid="uid://dqg78sofaixu3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_usyxt"]
+[ext_resource type="Material" uid="uid://dpwv2uvuuprxh" path="res://Materials/albedo_black.tres" id="2_o7ylg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0lqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ffog"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_38nvs"]
+material = ExtResource("2_o7ylg")
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_usyxt")
@@ -18,5 +22,69 @@ shape = SubResource("CapsuleShape3D_8ffog")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 1048573
 current = true
 fov = 79.8
+
+[node name="Node3D" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.57)
+
+[node name="GlassesPiece" type="Node3D" parent="Camera3D/Node3D"]
+transform = Transform3D(-0.269129, 0, 0, 0, 0.0683064, 0, 0, 0, 0.0328368, -0.2, 0, 0)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60261, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57867, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece"]
+transform = Transform3D(-4.37114e-08, 0.253805, 0, -3.94003, -4.37114e-08, 0, 0, 0, 1, -0.400883, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece"]
+transform = Transform3D(-4.37114e-08, 0.253805, 0, -3.94003, -4.37114e-08, 0, 0, 0, 1, 0.403868, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="GlassesPiece2" type="Node3D" parent="Camera3D/Node3D"]
+transform = Transform3D(-0.269129, 0, 0, 0, 0.0683064, 0, 0, 0, 0.0328368, 0.2, 0, 0)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60261, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57867, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece2"]
+transform = Transform3D(-4.37114e-08, 0.253805, 0, -3.94003, -4.37114e-08, 0, 0, 0, 1, -0.400883, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Camera3D/Node3D/GlassesPiece2"]
+transform = Transform3D(-4.37114e-08, 0.253805, 0, -3.94003, -4.37114e-08, 0, 0, 0, 1, 0.403868, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Camera3D/Node3D"]
+transform = Transform3D(0.134982, 5.97154e-09, 0, 1.18005e-08, -0.0683064, 0, 0, 0, 0.0328368, 0.002, 0.083779, 0)
+layers = 2
+mesh = SubResource("BoxMesh_38nvs")
+skeleton = NodePath("../../..")

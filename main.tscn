@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbt1a81rv0tqh"]
+[gd_scene load_steps=9 format=3 uid="uid://dbt1a81rv0tqh"]
 
 [ext_resource type="PackedScene" uid="uid://dqg78sofaixu3" path="res://Player.tscn" id="1_7mttf"]
 [ext_resource type="Texture2D" uid="uid://cvg7bhm6dei54" path="res://AllSkyFree/AllSkyFree_Skyboxes/Epic_BlueSunset_EquiRect_flat.png" id="1_m7naw"]
@@ -14,6 +14,17 @@ background_mode = 2
 background_color = Color(0.426, 0.5304, 0.6, 1)
 sky = SubResource("Sky_717rc")
 ssao_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6y3il"]
+viewport_path = NodePath("MeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa8v1"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_6y3il")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4vsg4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_pa8v1")
 
 [node name="Main" type="Node3D"]
 
@@ -96,3 +107,17 @@ omni_range = 7.0
 [node name="Player" parent="." instance=ExtResource("1_7mttf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07292, 2.46146, 2.75674)
 floor_block_on_wall = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.1, 0, 0, 0, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0.709767, 1.3004, -1.88506)
+mesh = SubResource("PlaneMesh_4vsg4")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SubViewport"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.71857, 1.31047, -2.15231)
+fov = 148.693
+size = 4.65654
+far = 7.0

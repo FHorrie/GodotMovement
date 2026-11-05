@@ -13,13 +13,15 @@ const CONTROLLER_SENSITIVITY = 0.05
 @onready var camera = $Camera3D
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion:
 		rotate_camera(event.relative, MOUSE_SENSITIVITY)
 

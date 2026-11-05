@@ -3,7 +3,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-const MAX_CAMERA_ANGLE = 80
+const MAX_CAMERA_ANGLE = 90
 
 const MOUSE_SENSITIVITY = 0.003
 const CONTROLLER_SENSITIVITY = 0.05
